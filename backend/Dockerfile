@@ -3,11 +3,11 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY backend/package*.json ./
 RUN npm ci
 
-COPY tsconfig.json ./
-COPY src ./src
+COPY backend/tsconfig.json ./
+COPY backend/src ./src
 
 RUN npm run build
 
@@ -17,7 +17,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Install production dependencies only
-COPY package*.json ./
+COPY backend/package*.json ./
 RUN npm ci --omit=dev
 
 # Copy compiled code
@@ -35,3 +35,4 @@ HEALTHCHECK --interval=15s --timeout=10s --retries=5 \
 
 # Run migrations then start server
 CMD ["sh", "-c", "node dist/scripts/runMigrations.js && node dist/server.js"]
+
