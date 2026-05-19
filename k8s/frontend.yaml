@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finai-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: finai-frontend
+  template:
+    metadata:
+      labels:
+        app: finai-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: finai/frontend:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: finai-frontend-svc
+spec:
+  selector:
+    app: finai-frontend
+  ports:
+  - port: 80
+    targetPort: 80

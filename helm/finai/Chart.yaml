@@ -1,0 +1,16 @@
+apiVersion: v2
+name: finai
+description: A Helm chart for the FinAI Enterprise v9.1 Platform
+type: application
+version: 1.0.0
+appVersion: "9.1.0"
+dependencies:
+  - name: mongodb
+    version: "13.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
+  - name: redis
+    version: "17.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
+  - name: kafka
+    version: "22.x.x"
+    repository: "https://charts.bitnami.com/bitnami"

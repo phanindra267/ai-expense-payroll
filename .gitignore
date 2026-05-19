@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+*.js.map
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Testing
+coverage/
+
+# Docker
+.docker/
+
+# MongoDB data
+mongo-data/
+
+# Redis data
+redis-data/
+
+# Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Temp
+tmp/
+temp/

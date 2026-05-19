@@ -1,0 +1,45 @@
+backend:
+  replicaCount: 2
+  image:
+    repository: finai/backend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 3000
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1Gi
+    requests:
+      cpu: 200m
+      memory: 512Mi
+
+gateway:
+  replicaCount: 2
+  image:
+    repository: finai/gateway
+    tag: "latest"
+  service:
+    type: LoadBalancer
+    port: 8080
+
+mlService:
+  replicaCount: 1
+  image:
+    repository: finai/ml-service
+    tag: "latest"
+
+mongodb:
+  auth:
+    rootPassword: "secure_mongodb_password"
+  architecture: "replicaset"
+
+redis:
+  auth:
+    enabled: false
+  architecture: "replication"
+
+kafka:
+  kraft:
+    enabled: true
